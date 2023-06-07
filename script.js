@@ -35,12 +35,43 @@ function showAllBooks(){
 function showNewBookForm(){
     console.log("btn click");
     document.querySelector("#form_overlay").classList.remove("hide");
-    document.getElementById("new_book_form").classList.remove("hide");
+    document.querySelector("#new_book_form").classList.remove("hide");
 }
 function hideNewBookForm(){
     document.querySelector("#form_overlay").classList.add("hide");
-    document.getElementById("new_book_form").classList.add("hide");
+    document.querySelector("#new_book_form").classList.add("hide");
 }
+
+/*For checking all input fields have value and Enable submit button*/
+let inputs = document.querySelectorAll('input');
+
+let inputValidator = {
+  "book_title": false,
+  "book_author": false,
+  "book_pages": false
+};
+
+inputs.forEach((input) => {
+    input.addEventListener('input', (event) => {
+      let name = event.target.getAttribute('name');
+      if (event.target.value.length > 0) {
+        inputValidator[name] = true;
+      } else {
+        inputValidator[name] = false;
+      };
+  
+      let allTrue = Object.keys(inputValidator).every((item) => {
+        return inputValidator[item] === true;
+      });
+  
+      if (allTrue) {
+        submitBtn.disabled = false;
+      } else {
+        submitBtn.disabled = true;
+      }
+    });
+});
+
 const booksContainer = document.querySelector("#container");
 let book1 = new Book("Harry Potter", "J.K. Rowlings", 30, false);
 let book2 = new Book("Harry Potter 2", "J.K. Rowlings 2", 30, false);
@@ -53,3 +84,6 @@ addBtn.addEventListener("click", showNewBookForm);
 
 const submitBtn = document.querySelector("#submit_btn");
 submitBtn.addEventListener("click", hideNewBookForm);
+
+const cancelBtn = document.querySelector("#cancel_btn");
+cancelBtn.addEventListener("click", hideNewBookForm);
