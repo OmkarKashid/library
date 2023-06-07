@@ -15,3 +15,18 @@ Book.prototype.info = function(){
 function addBookToLibrary(newBook){
     userLibrary.push(newBook);
 }
+
+function showAllBooks(){
+    userLibrary.forEach(book => {
+        const div = document.createElement("div");
+        div.className = "book";
+        div.innerHTML = `${book.title}, ${book.author}`;
+        booksContainer.appendChild(div);
+    });
+}
+const booksContainer = document.querySelector("#container");
+let book1 = new Book("Harry Potter", "J.K. Rowlings", 30, false);
+let book2 = new Book("Harry Potter 2", "J.K. Rowlings 2", 30, false);
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+showAllBooks();
