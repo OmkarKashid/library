@@ -1,3 +1,5 @@
+let userLibrary = [];
+
 function Book(title, author, pages, isread){
     this.title = title;
     this.author = author;
@@ -8,4 +10,8 @@ function Book(title, author, pages, isread){
 Book.prototype.info = function(){
     const readStatus = isread? "finished reading" : "not read yet";
     return `${this.title} by ${this.author}, ${this.pages} pages, ${readStatus}.`;
+}
+
+function addBookToLibrary(newBook){
+    userLibrary.push(newBook);
 }
