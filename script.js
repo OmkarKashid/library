@@ -18,9 +18,13 @@ function addBookToLibrary(newBook){
 
 function showAllBooks(){
     userLibrary.forEach(book => {
+        const readStatus = book.isread? "finished reading" : "not read yet";
         const div = document.createElement("div");
         div.className = "book";
-        div.innerHTML = `${book.title}, ${book.author}`;
+        div.innerHTML = `<h3>${book.title}</h3>
+                         <div>Author: ${book.author}</div>
+                         <div>Total Pages: ${book.pages}</div>
+                         <div>Status: ${readStatus}</div>`;
         booksContainer.appendChild(div);
     });
 }
