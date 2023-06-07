@@ -16,20 +16,33 @@ Book.prototype.info = function(){
 function addBookToLibrary(newBook){
     userLibrary.push(newBook);
     showAllBooks();
+    /*document.querySelector(`[data-book_title="${newBook.title}"]`).addEventListener("click",deleteBookFromLibrary(newBook.title));*/
 }
-
+function deleteBookFromLibrary(book_title){
+    console.log("delete");
+    let index = userLibrary.findIndex(book => book.title === book_title);
+    console.log("delete");
+    console.log(index);
+    userLibrary.splice(index,1);
+    document.querySelector(`#${book_title}`).remove();
+    console.log(userLibrary);
+    showAllBooks();
+}
 function showAllBooks(){
     userLibrary.forEach(book => {
         if(book.isRendered === false){
             const readStatus = book.isread? "finished reading" : "not read yet";
             const div = document.createElement("div");
             div.className = "book";
+            div.setAttribute("id", `${book.title}`);
             div.innerHTML = `<h3>${book.title}</h3>
                             <div>Author: ${book.author}</div>
                             <div>Total Pages: ${book.pages}</div>
-                            <div>Status: ${readStatus}</div>`;
+                            <div>Status: ${readStatus}</div>
+                            <button data-book_title="${book.title}" >Delete</button>`;
             booksContainer.appendChild(div);
             book.isRendered = true;
+            
         }
     });
 }
