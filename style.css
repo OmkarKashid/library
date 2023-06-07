@@ -17,3 +17,35 @@
     text-align: center;
     border-style: solid;
 }
+#form_overlay{
+    /*display: none;*/
+    width: 100vw;
+    top:0;
+    left:0;
+    height: 100vh;
+    position: absolute;
+    z-index: 1002;
+    background: rgba(0, 0, 0, .6);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+    filter: blur(2px);
+}
+#new_book_form{
+    /*display: none;*/
+    text-align: center;
+    width: 555px;
+    background: #f6f6f6;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    box-shadow: #64686e 0px 0px 3px 3px;
+    -moz-box-shadow: #64686e 0px 0px 3px 3px;
+    -webkit-box-shadow: #64686e 0px 0px 3px 3px;
+    position: fixed;
+    z-index:1003;
+    top: 20%;
+    left: 25%;
+    padding: 25px;
+}
