@@ -14,29 +14,29 @@
             <button id="add_btn" type="button">+</button>
         </div>
     </div>
-    <div id="form_overlay"></div>
-    <form id="new_book_form" action="">
+    <div id="form_overlay" class="hide"></div>
+    <form id="new_book_form" class="hide" action="">
         <label for="book_title">Book Title </label>
-        <input id="book_title" type="text" value="book_title">
+        <input id="book_title" type="text" name="book_title" required>
         <br>
         <br>
 
         <label for="book_author">Book Author </label>
-        <input id="book_author" type="text" value="book_author">
+        <input id="book_author" type="text" name="book_author" required>
         <br>
         <br>
 
         <label for="book_pages">Total Book Pages </label>
-        <input id="book_pages" type="number" value="book_pages" min="1" >
+        <input id="book_pages" type="number" min="1" name="book_pages" required>
         <br>
         <br>
 
         <label for="book_readStatus">Have you Read the Book? </label>
-        <input id="book_readStatus" type="checkbox" value="book_readStatus">
+        <input id="book_readStatus" type="checkbox" name="book_readStatus">
         <br>
         <br>
-        
-        <input type="submit" value="Add Book">
+
+        <input id="submit_btn" type="submit" value="Add Book">
     </form>
 </body>
 </html>

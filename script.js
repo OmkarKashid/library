@@ -34,7 +34,12 @@ function showAllBooks(){
 }
 function showNewBookForm(){
     console.log("btn click");
-    
+    document.querySelector("#form_overlay").classList.remove("hide");
+    document.getElementById("new_book_form").classList.remove("hide");
+}
+function hideNewBookForm(){
+    document.querySelector("#form_overlay").classList.add("hide");
+    document.getElementById("new_book_form").classList.add("hide");
 }
 const booksContainer = document.querySelector("#container");
 let book1 = new Book("Harry Potter", "J.K. Rowlings", 30, false);
@@ -42,5 +47,9 @@ let book2 = new Book("Harry Potter 2", "J.K. Rowlings 2", 30, false);
 addBookToLibrary(book1);
 addBookToLibrary(book2);
 showAllBooks();
+
 const addBtn = document.querySelector("#add_btn");
 addBtn.addEventListener("click", showNewBookForm);
+
+const submitBtn = document.querySelector("#submit_btn");
+submitBtn.addEventListener("click", hideNewBookForm);

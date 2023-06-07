@@ -18,7 +18,6 @@
     border-style: solid;
 }
 #form_overlay{
-    /*display: none;*/
     width: 100vw;
     top:0;
     left:0;
@@ -33,7 +32,6 @@
     filter: blur(2px);
 }
 #new_book_form{
-    /*display: none;*/
     text-align: center;
     width: 555px;
     background: #f6f6f6;
@@ -48,4 +46,7 @@
     top: 20%;
     left: 25%;
     padding: 25px;
+}
+.hide{
+    display: none;
 }
