@@ -15,6 +15,7 @@ Book.prototype.info = function(){
 
 function addBookToLibrary(newBook){
     userLibrary.push(newBook);
+    showAllBooks();
 }
 
 function showAllBooks(){
@@ -72,11 +73,25 @@ inputs.forEach((input) => {
     });
 });
 
+function getData(form) {
+    let formData = new FormData(form);
+    let book_title = Object.fromEntries(formData).book_title;
+    let book_author = Object.fromEntries(formData).book_author;
+    let book_pages = Object.fromEntries(formData).book_pages;
+    let book_readStatus = Object.fromEntries(formData).book_readStatus ? true : false;
+    
+    addBookToLibrary(new Book(book_title, book_author, book_pages, book_readStatus));
+}
+
+document.querySelector("#new_book_form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    getData(e.target);
+    document.querySelector("#new_book_form").reset();
+});
+
 const booksContainer = document.querySelector("#container");
-let book1 = new Book("Harry Potter", "J.K. Rowlings", 30, false);
-let book2 = new Book("Harry Potter 2", "J.K. Rowlings 2", 30, false);
+let book1 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowlings", 223, false);
 addBookToLibrary(book1);
-addBookToLibrary(book2);
 showAllBooks();
 
 const addBtn = document.querySelector("#add_btn");
