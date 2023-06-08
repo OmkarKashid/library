@@ -9,6 +9,12 @@
     <script src="./script.js" defer></script>
 </head>
 <body>
+    <header>
+        <h1>My Book Library</h1>
+        <div>
+            You can use this app to store info about Books and have you Read it or Not!
+        </div>
+    </header>
     <div id="container">
         <div id="add_btn_container">
             <button id="add_btn" type="button">+</button>
@@ -17,17 +23,17 @@
     <div id="form_overlay" class="hide"></div>
     <form id="new_book_form" class="hide" action="">
         <label for="book_title">Book Title </label>
-        <input id="book_title" type="text" name="book_title" required>
+        <input id="book_title" type="text" name="book_title" maxlength="40" required>
         <br>
         <br>
 
         <label for="book_author">Book Author </label>
-        <input id="book_author" type="text" name="book_author" required>
+        <input id="book_author" type="text" name="book_author" maxlength="20" required>
         <br>
         <br>
 
         <label for="book_pages">Total Book Pages </label>
-        <input id="book_pages" type="number" name="book_pages" required>
+        <input id="book_pages" type="number" name="book_pages" maxlength="8" required>
         <br>
         <br>
 

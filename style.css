@@ -1,18 +1,35 @@
+@font-face {
+    font-family: Kanit;
+    src: url(./fonts/Kanit/Kanit-Regular.ttf);
+}
+body{
+    font-family: Kanit;
+    letter-spacing: 0.1rem;
+}
 #container{
     display: grid;
     grid-template-rows: 250px 250px;
     grid-template-columns: 250px 250px 250px 250px 250px;
     grid-auto-rows: 250px;
 }
+header{
+    text-align: center;
+    padding-bottom: 30px;
+}
 .book{
     width: 230px;
-    height: 220px;
+    height: 230px;
+    font-size: 0.9rem;
     text-align: center;
     border-style: solid;
+    overflow: auto;
+}
+button{
+    margin-bottom: 10px;
 }
 #add_btn{
-    width: 180px;
-    height: 165px;
+    width: 235px;
+    height: 236px;
     font-size: 60px;
     text-align: center;
     border-style: solid;
