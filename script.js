@@ -16,6 +16,14 @@ function addBookToLibrary(newBook){
     userLibrary.push(newBook);
     showAllBooks();
 }
+function addReadToggleEventHandler(){
+    const readToggles = document.querySelectorAll(".toggle");
+    readToggles.forEach(readToggle => readToggle.addEventListener("change", function(){ changeReadStatus(readToggle.getAttribute("data-book_index"));}));
+}
+function changeReadStatus(book_index){
+    userLibrary[book_index].isread = !(userLibrary[book_index].isread);
+    showAllBooks();
+}
 function addDeleteEventHandler(){
     const delBtns = document.querySelectorAll("button[data-index]");
     delBtns.forEach(delBtn => delBtn.addEventListener("click", function(){ deleteBookFromLibrary(delBtn.getAttribute("data-index"));}));
@@ -29,9 +37,9 @@ function deleteBookFromLibrary(book_index){
 function showAllBooks(){
     document.querySelectorAll(".book").forEach(e => e.remove());
     userLibrary.forEach((book, i) => {
-        let checkbox = `<input class="slider" data-book_index="${i}" type="checkbox">`;
+        let checkbox = `<input class="toggle" data-book_index="${i}" type="checkbox">`;
         if(book.isread){
-          checkbox = `<input class="slider" data-book_index="${i}" type="checkbox" checked>`;
+          checkbox = `<input class="toggle" data-book_index="${i}" type="checkbox" checked>`;
         }
         const readStatus = book.isread? "finished reading" : "not read yet";
         const div = document.createElement("div");
@@ -52,6 +60,7 @@ function showAllBooks(){
         booksContainer.appendChild(div);
     });
     addDeleteEventHandler();
+    addReadToggleEventHandler();
 }
 function showNewBookForm(){
     document.querySelector("#form_overlay").classList.remove("hide");
