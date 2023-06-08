@@ -5,7 +5,6 @@ function Book(title, author, pages, isread){
     this.author = author;
     this.pages = pages;
     this.isread = isread;
-    this.isRendered = false;
 }
 
 Book.prototype.info = function(){
@@ -29,21 +28,21 @@ function deleteBookFromLibrary(book_title){
     showAllBooks();
 }
 function showAllBooks(){
+    document.querySelectorAll(".book").forEach(e => e.remove());
     userLibrary.forEach(book => {
-        if(book.isRendered === false){
-            const readStatus = book.isread? "finished reading" : "not read yet";
-            const div = document.createElement("div");
-            div.className = "book";
-            div.setAttribute("id", `${book.title}`);
-            div.innerHTML = `<h3>${book.title}</h3>
-                            <div>Author: ${book.author}</div>
-                            <div>Total Pages: ${book.pages}</div>
-                            <div>Status: ${readStatus}</div>
-                            <button data-book_title="${book.title}" >Delete</button>`;
-            booksContainer.appendChild(div);
-            book.isRendered = true;
-            
-        }
+        
+        const readStatus = book.isread? "finished reading" : "not read yet";
+        const div = document.createElement("div");
+        div.className = "book";
+        div.setAttribute("id", `${book.title}`);
+        div.innerHTML = `<h3>${book.title}</h3>
+                         <div>Author: ${book.author}</div>
+                         <div>Total Pages: ${book.pages}</div>
+                         <div>Status: ${readStatus}</div>
+                         <button data-book_title="${book.title}" >Delete</button>`;
+        booksContainer.appendChild(div);
+        book.isRendered = true;
+        console.log("here");
     });
 }
 function showNewBookForm(){
