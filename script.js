@@ -15,7 +15,6 @@ Book.prototype.info = function(){
 function addBookToLibrary(newBook){
     userLibrary.push(newBook);
     showAllBooks();
-    /*document.querySelector(`[data-book_title="${newBook.title}"]`).addEventListener("click",deleteBookFromLibrary(newBook.title));*/
 }
 function addDeleteEventHandler(){
     const delBtns = document.querySelectorAll("button[data-index]");
@@ -23,19 +22,17 @@ function addDeleteEventHandler(){
 }
 
 function deleteBookFromLibrary(book_index){
-    console.log("delete");
-    /*let index = userLibrary.findIndex(book => book.title === book_title);*/
-    console.log("delete");
-    console.log(book_index);
     userLibrary.splice(book_index,1);
-    console.log(userLibrary);
     showAllBooks();
 }
 
 function showAllBooks(){
     document.querySelectorAll(".book").forEach(e => e.remove());
     userLibrary.forEach((book, i) => {
-        
+        let checkbox = `<input class="slider" data-book_index="${i}" type="checkbox">`;
+        if(book.isread){
+          checkbox = `<input class="slider" data-book_index="${i}" type="checkbox" checked>`;
+        }
         const readStatus = book.isread? "finished reading" : "not read yet";
         const div = document.createElement("div");
         div.className = "book";
@@ -44,13 +41,19 @@ function showAllBooks(){
                          <div>Author: ${book.author}</div>
                          <div>Total Pages: ${book.pages}</div>
                          <div>Status: ${readStatus}</div>
+                         <span>Read :</span>
+                         <label class="switch">                   
+                           ${checkbox}
+                           <span class="slider round"></span>
+                         </label>
+                         <br>
+                         <br>
                          <button data-index="${i}">Delete</button>`;
         booksContainer.appendChild(div);
     });
     addDeleteEventHandler();
 }
 function showNewBookForm(){
-    console.log("btn click");
     document.querySelector("#form_overlay").classList.remove("hide");
     document.querySelector("#new_book_form").classList.remove("hide");
 }
@@ -89,6 +92,7 @@ inputs.forEach((input) => {
     });
 });
 
+/*Getting new book data from user filled form */
 function getData(form) {
     let formData = new FormData(form);
     let book_title = Object.fromEntries(formData).book_title;
@@ -100,12 +104,13 @@ function getData(form) {
 }
 
 document.querySelector("#new_book_form").addEventListener("submit", function (e) {
-    e.preventDefault();
+    e.preventDefault(); //prevents default function of submitting data to server
     getData(e.target);
     document.querySelector("#new_book_form").reset();
 });
 
 const booksContainer = document.querySelector("#container");
+//Demo Book
 let book1 = new Book("Harry Potter and the Philosopher's Stone", "J.K. Rowlings", 223, false);
 addBookToLibrary(book1);
 showAllBooks();
