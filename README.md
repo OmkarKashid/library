@@ -5,3 +5,5 @@ An Online single page Application for storing books information, built using HTM
 2. Add Multiple books.
 3. Change Read Status.
 4. Delete books.
+### Live Preview
+[MyLibrary](https://omkarkashid.github.io/library/)
