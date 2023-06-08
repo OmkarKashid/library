@@ -9,10 +9,18 @@ body{
 background: linear-gradient(90deg, rgba(13,65,135,1) 0%, rgba(57,143,207,1) 35%, rgba(0,212,255,1) 100%);
 }
 #container{
+    /*
     display: grid;
     grid-template-rows: 250px 250px;
     grid-template-columns: 250px 250px 250px 250px 250px;
     grid-auto-rows: 250px;
+    */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: flex-start;
+    width:fit-content ;
 }
 header{
     text-align: center;
@@ -31,20 +39,27 @@ header{
     background-color: hsla(251, 91%, 39%, 0.438);
     border-radius: 5px;
     box-shadow: 2px 2px 2px hsla(327, 41%, 5%, 0.966);
+    margin: 10px;
 }
 button{
     margin-bottom: 10px;
+    background-color: hsla(347, 89%, 49%, 0.884);
+    color: hsla(0, 0%, 100%, 0.993);
+    border-radius: 5px;
+    border-color: hsla(0, 4%, 5%, 0.808);
 }
 #add_btn{
     width: 235px;
     height: 236px;
+    color: hsla(0, 0%, 100%, 0.788);
     font-size: 60px;
     text-align: center;
     border-style: solid;
     border-color: hsla(0, 4%, 5%, 0.808);
     border-width: 3px;
     border-radius: 5px;
-    background-color: hsla(192, 72%, 52%, 0.959);
+    background-color: hsla(190, 100%, 50%, 0.884);
+    margin: 10px;
 }
 #form_overlay{
     width: 100vw;
