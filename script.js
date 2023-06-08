@@ -17,19 +17,24 @@ function addBookToLibrary(newBook){
     showAllBooks();
     /*document.querySelector(`[data-book_title="${newBook.title}"]`).addEventListener("click",deleteBookFromLibrary(newBook.title));*/
 }
-function deleteBookFromLibrary(book_title){
+function addDeleteEventHandler(){
+    const delBtns = document.querySelectorAll("button[data-index]");
+    delBtns.forEach(delBtn => delBtn.addEventListener("click", function(){ deleteBookFromLibrary(delBtn.getAttribute("data-index"));}));
+}
+
+function deleteBookFromLibrary(book_index){
     console.log("delete");
-    let index = userLibrary.findIndex(book => book.title === book_title);
+    /*let index = userLibrary.findIndex(book => book.title === book_title);*/
     console.log("delete");
-    console.log(index);
-    userLibrary.splice(index,1);
-    document.querySelector(`#${book_title}`).remove();
+    console.log(book_index);
+    userLibrary.splice(book_index,1);
     console.log(userLibrary);
     showAllBooks();
 }
+
 function showAllBooks(){
     document.querySelectorAll(".book").forEach(e => e.remove());
-    userLibrary.forEach(book => {
+    userLibrary.forEach((book, i) => {
         
         const readStatus = book.isread? "finished reading" : "not read yet";
         const div = document.createElement("div");
@@ -39,11 +44,10 @@ function showAllBooks(){
                          <div>Author: ${book.author}</div>
                          <div>Total Pages: ${book.pages}</div>
                          <div>Status: ${readStatus}</div>
-                         <button data-book_title="${book.title}" >Delete</button>`;
+                         <button data-index="${i}">Delete</button>`;
         booksContainer.appendChild(div);
-        book.isRendered = true;
-        console.log("here");
     });
+    addDeleteEventHandler();
 }
 function showNewBookForm(){
     console.log("btn click");
