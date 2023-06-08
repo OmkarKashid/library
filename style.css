@@ -5,6 +5,8 @@
 body{
     font-family: Kanit;
     letter-spacing: 0.1rem;
+    background: rgb(13,65,135);
+background: linear-gradient(90deg, rgba(13,65,135,1) 0%, rgba(57,143,207,1) 35%, rgba(0,212,255,1) 100%);
 }
 #container{
     display: grid;
@@ -15,14 +17,20 @@ body{
 header{
     text-align: center;
     padding-bottom: 30px;
+    color: hsl(0, 0%, 100%);
 }
 .book{
     width: 230px;
     height: 230px;
     font-size: 0.9rem;
     text-align: center;
+    color: hsl(0, 0%, 100%);
     border-style: solid;
+    border-color: hsla(0, 4%, 5%, 0.808);
     overflow: auto;
+    background-color: hsla(251, 91%, 39%, 0.438);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px hsla(327, 41%, 5%, 0.966);
 }
 button{
     margin-bottom: 10px;
@@ -33,6 +41,10 @@ button{
     font-size: 60px;
     text-align: center;
     border-style: solid;
+    border-color: hsla(0, 4%, 5%, 0.808);
+    border-width: 3px;
+    border-radius: 5px;
+    background-color: hsla(192, 72%, 52%, 0.959);
 }
 #form_overlay{
     width: 100vw;
